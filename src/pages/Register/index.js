@@ -16,7 +16,7 @@ export default function Login() {
     function hadleRegister(e)
     {
         e.preventDefault();
-        console.log(name,email,whatsApp,city,uf);
+        const data = {name,email,whatsApp,city,uf};
     }
 
     return(
