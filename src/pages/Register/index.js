@@ -9,14 +9,23 @@ export default function Login() {
     //Setando os estados (valores dos inputs)
     const [name,SetName] = useState('');
     const [email,SetEmail] = useState('');
-    const [whatsApp,SetWhatsApp] = useState('');
+    const [whatsapp,SetWhatsApp] = useState('');
     const [city,SetCity] = useState('');
     const [uf,SetUf] = useState('');
 
-    function hadleRegister(e)
+    async function hadleRegister(e)
     {
         e.preventDefault();
-        const data = {name,email,whatsApp,city,uf};
+        const data = {name,email,whatsapp,city,uf};
+        try 
+        {
+            const res = await api.post('users',data);
+            alert(`Seu ID de Acesso: ${res.data.id} `);
+        } 
+        catch (error) 
+        {
+            alert('Erro no cadastro, tente novamente');
+        }
     }
 
     return(
@@ -34,7 +43,7 @@ export default function Login() {
                <form onSubmit={hadleRegister}>
                     <input value={name} onChange={e=>SetName(e.target.value)} placeholder='Nome do Usuário'/>
                     <input value={email}  onChange={e=>SetEmail(e.target.value)} type="email" placeholder='Email'/>
-                    <input value={whatsApp}  onChange={e=>SetWhatsApp(e.target.value)} placeholder='WhatsApp' />
+                    <input value={whatsapp}  onChange={e=>SetWhatsApp(e.target.value)} placeholder='WhatsApp' />
                     <div className="input-group">
                         <input value={city}  onChange={e=>SetCity(e.target.value)} placeholder='Cidade'/>
                         <input value={uf}  onChange={e=>SetUf(e.target.value)} placeholder='UF' style={ {width:80} }/>
