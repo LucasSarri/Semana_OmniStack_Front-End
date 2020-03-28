@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {FiArrowLeft} from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
@@ -13,6 +13,8 @@ export default function Login() {
     const [city,SetCity] = useState('');
     const [uf,SetUf] = useState('');
 
+    const history = useHistory();
+
     async function hadleRegister(e)
     {
         e.preventDefault();
@@ -21,6 +23,7 @@ export default function Login() {
         {
             const res = await api.post('users',data);
             alert(`Seu ID de Acesso: ${res.data.id} `);
+            history.push('/');
         } 
         catch (error) 
         {
