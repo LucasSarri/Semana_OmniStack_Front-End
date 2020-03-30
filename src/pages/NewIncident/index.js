@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 import {FiArrowLeft} from 'react-icons/fi';
@@ -7,7 +7,7 @@ import logoImg from '../../assets/logo.svg';
 
 export default function NewIncident(){
 
-    const user_id = localStorage.getItem('user_id');
+    const user_id = localStorage.getItem('userId');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [value, setValue] = useState('');
